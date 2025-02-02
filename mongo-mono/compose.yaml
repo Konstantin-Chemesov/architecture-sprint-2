@@ -1,6 +1,8 @@
 services:
   mongodb1:
     container_name: mongodb1
+    ports:
+      - "27017:27017"
     image: dh-mirror.gitverse.ru/mongo:latest
     volumes:
       - mongodb1_data_container:/data/db
@@ -9,7 +11,7 @@ services:
     container_name: pymongo_api
     build: 
       context: api_app
-      dockerfile: Dockerfile
+      dockerfile: api_app/Dockerfile
     image: kazhem/pymongo_api:1.0.0
     depends_on:
       - mongodb1
